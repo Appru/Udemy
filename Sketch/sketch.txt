@@ -1,0 +1,38 @@
+const canvasSketch = require('canvas-sketch');
+
+const settings = {
+  //dimensions: [ 2048, 2048 ]
+  dimensions: [1080, 1920]
+};
+
+const sketch = () => {
+  return ({ context, width, height }) => {
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, width, height);
+
+    const recWidth = width * 0.02;
+    const recHeight = height * 0.2;
+
+    context.fillStyle = 'black';
+
+
+    for (let i = 0; i < 12; i++) {
+
+      context.beginPath();
+      context.rect(100 * i, 0, recWidth, recHeight);
+      context.fill();
+
+    }
+
+    context.translate(0, 500);
+
+    for (let i = 0; i < 12; i++) {
+      context.beginPath();
+      context.rect(100 * i, 100, recWidth, recHeight);
+      context.fill();
+
+    }
+  };
+};
+
+canvasSketch(sketch, settings);
